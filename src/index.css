@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import "tailwindcss";
+
+:root {
+  color: #04142C;
+  background-color: #F3F4F6;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans", sans-serif;
+}
+
+.font-montserrat {
+  font-family: "Montserrat", sans-serif;
+}
+
+.font-open-sans {
+  font-family: "Open Sans", sans-serif;
+}
+
+.font-caveat {
+  font-family: "Caveat", sans-serif;
+}
+
+/* Simple Section Layout */
+.section-placeholder {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 800;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+}
+
+section:nth-child(even) .section-placeholder {
+  background-color: #ffffff;
+  color: #1f2937;
+}
+
+section:nth-child(odd) .section-placeholder {
+  background-color: #f1f5f9;
+  color: #4b5563;
+}
+
+/* Custom Animations */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-fade-in {
+  animation: fade-in 1.2s ease-out forwards;
+}
+
+.animate-spin-slow {
+  animation: spin 15s linear infinite;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes marquee {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 110s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+
+.perspective-container {
+  perspective: 1500px;
+  overflow: visible;
+}
+
+.perspective-container .team-card,
+.perspective-container .achievement-card {
+  transition: transform 0.5s ease-out;
+  transform-style: preserve-3d;
+}
+
+.perspective-container .achievement-card:hover {
+  transform: translateZ(50px) rotateY(10deg);
+}
+
+.floating-text {
+  font-family: "Caveat", sans-serif;
+  color: rgba(0, 15, 37, 0.4);
+  line-height: 1.1;
+  user-select: none;
+  pointer-events: none;
+  transition: all 0.7s;
+  animation: floating 6s ease-in-out infinite;
+}
+
+
+@keyframes floating {
+  0%, 100% { transform: translateY(0) rotate(var(--tw-rotate)); }
+  50% { transform: translateY(-15px) rotate(var(--tw-rotate)); }
+}
